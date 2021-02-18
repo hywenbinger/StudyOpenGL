@@ -44,5 +44,7 @@
   <ItemGroup>
     <None Include="fragmentSource.frag" />
     <None Include="vertexSource.vert" />
+    <None Include="fragmentSourceFBO.frag" />
+    <None Include="vertexSourceFBO.vert" />
   </ItemGroup>
 </Project>
