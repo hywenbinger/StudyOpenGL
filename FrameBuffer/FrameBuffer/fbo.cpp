@@ -182,6 +182,8 @@ int main()
 		glBindTexture(GL_TEXTURE_2D, texColorBuffer);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
+		// 延展：既然整个场景都被渲染到了一个纹理上，那么就可以简单地通过修改纹理数据创建出一些非常有意思的效果。
+
 		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
