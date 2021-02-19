@@ -170,7 +170,7 @@ int main()
 		glBindTexture(GL_TEXTURE_2D, textureID12);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-		// 7.解绑帧缓冲，保证后续操作渲染到【默认的帧缓冲】上
+		// 7.解绑帧缓冲，保证后续操作渲染到【默认的帧缓冲】中
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 		glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
