@@ -21,6 +21,9 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="fbo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -44,7 +47,7 @@
   <ItemGroup>
     <None Include="fragmentSource.frag" />
     <None Include="vertexSource.vert" />
-    <None Include="fragmentSourceFBO.frag" />
-    <None Include="vertexSourceFBO.vert" />
+    <None Include="fragmentSource2.frag" />
+    <None Include="vertexSource2.vert" />
   </ItemGroup>
 </Project>
