@@ -1,10 +1,4 @@
-﻿  cameraTest2.cpp
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(177): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(242): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(243): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(247): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(248): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(249): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(250): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-d:\work\opengl\workspace\camera\camera\cameratest2.cpp(288): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+﻿  cameraTest1.cpp
+d:\work\opengl\workspace\camera\camera\cameratest1.cpp(160): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+d:\work\opengl\workspace\camera\camera\cameratest1.cpp(229): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   Camera.vcxproj -> D:\Work\OpenGL\workspace\Camera\Debug\Camera.exe
