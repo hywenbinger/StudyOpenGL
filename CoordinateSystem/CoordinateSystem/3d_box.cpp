@@ -206,12 +206,6 @@ int main()
 
 		myShader->use();
 
-		// 模型矩阵
-		//glm::mat4 modelMat;
-		//modelMat = glm::rotate(modelMat, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(glGetUniformLocation(myShader->ID, "modelMat"), 
-		//	1, GL_FALSE, glm::value_ptr(modelMat));
-
 		// 观察矩阵
 		glm::mat4 viewMat;
 		viewMat = glm::translate(viewMat, glm::vec3(0.0, 0.0, -3.0));
@@ -227,8 +221,10 @@ int main()
 		glBindVertexArray(VAO);
 
 		// 画十个立方体
-		for (unsigned int i = 0; i < 10; i++)
+		unsigned int number = sizeof(cubePositions) / sizeof(cubePositions[0]);
+		for (unsigned int i = 0; i < number; i++)
 		{
+			// 模型矩阵
 			glm::mat4 modelMat;
 			modelMat = glm::translate(modelMat, cubePositions[i]);
 			float angle = 20.0f * (i + 1);
