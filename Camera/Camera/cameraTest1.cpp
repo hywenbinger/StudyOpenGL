@@ -31,7 +31,7 @@ glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 void processInput(GLFWwindow *window);
 unsigned int loadTexture(const char *path);
 
-// 顶点数据
+// 立方体6个面的所有顶点数据
 float vertices[] = {
 	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
