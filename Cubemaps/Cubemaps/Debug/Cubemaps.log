@@ -1,0 +1,4 @@
+﻿  main.cpp
+d:\work\opengl\workspace\cubemaps\cubemaps\main.cpp(126): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+d:\work\opengl\workspace\cubemaps\cubemaps\main.cpp(181): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  Cubemaps.vcxproj -> D:\Work\OpenGL\workspace\Cubemaps\Debug\Cubemaps.exe
