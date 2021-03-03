@@ -154,8 +154,10 @@
     <Image Include="wall.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fragmentSource.frag" />
-    <None Include="vertexSource.vert" />
+    <None Include="planeFS.frag" />
+    <None Include="planeVS.vert" />
+    <None Include="skyboxFS.frag" />
+    <None Include="skyboxVS.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -60,7 +60,9 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fragmentSource.frag" />
-    <None Include="vertexSource.vert" />
+    <None Include="skyboxFS.frag" />
+    <None Include="skyboxVS.vert" />
+    <None Include="planeFS.frag" />
+    <None Include="planeVS.vert" />
   </ItemGroup>
 </Project>
