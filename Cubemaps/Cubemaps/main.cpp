@@ -90,12 +90,12 @@ float skyboxVertices[] = {
 };
 
 // 图片路径
-vector<std::string> faces
+vector<string> faces
 {
 	"right.jpg",
 	"left.jpg",
-	"top.jpg",
 	"bottom.jpg",
+	"top.jpg",
 	"front.jpg",
 	"back.jpg"
 };
@@ -147,13 +147,13 @@ int main()
 	Shader* planeShader = new Shader("planeVS.vert", "planeFS.frag");
 	planeShader->use();
 	// plane vertex
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
 	// plane texture
 	int planeTextureIndex = 2;
-	unsigned int planeTexture = loadTexture("left.jpg");
+	unsigned int planeTexture = loadTexture("awesomeface.png");
 	glUniform1i(glGetUniformLocation(planeShader->ID, "plane"), planeTextureIndex);
 
 	// skybox
@@ -168,8 +168,8 @@ int main()
 	Shader* skyboxShader = new Shader("skyboxVS.vert", "skyboxFS.frag");
 	skyboxShader->use();
 	// skybox vertex
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	// skybox texture
 	int skyboxTextureIndex = 7;
 	unsigned int skyboxTexture = loadCubemap(faces);
@@ -179,12 +179,6 @@ int main()
 	projectionMat = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
 	glUniformMatrix4fv(glGetUniformLocation(skyboxShader->ID, "projectionMat"),
 		1, GL_FALSE, glm::value_ptr(projectionMat));
-	// skybox model matrix
-	glm::mat4 modelMat;
-	modelMat = glm::translate(modelMat, glm::vec3(0.0f, 0.0f, -5.0f));
-	modelMat = glm::rotate(modelMat, glm::radians(30.0f), glm::vec3(1.0f, 0.2f, 0.5f));
-	glUniformMatrix4fv(glGetUniformLocation(skyboxShader->ID, "modelMat"),
-		1, GL_FALSE, glm::value_ptr(modelMat));
 
 	while (!glfwWindowShouldClose(window)) {
 
@@ -213,7 +207,13 @@ int main()
 		glm::mat4 viewMat = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 		glUniformMatrix4fv(glGetUniformLocation(skyboxShader->ID, "viewMat"),
 			1, GL_FALSE, glm::value_ptr(viewMat));
-		// draw skybox
+		// skybox model matrix
+		glm::mat4 modelMat;
+		modelMat = glm::translate(modelMat, glm::vec3(0.0f, 0.0f, -3.0f));
+		modelMat = glm::rotate(modelMat, (float)glfwGetTime() * glm::radians(20.0f), glm::vec3(1.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(glGetUniformLocation(skyboxShader->ID, "modelMat"),
+			1, GL_FALSE, glm::value_ptr(modelMat));
+		// draw skybox 
 		glBindVertexArray(skyboxVAO);
 		glActiveTexture(GL_TEXTURE0 + skyboxTextureIndex);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
@@ -270,13 +270,13 @@ unsigned int loadTexture(char const * path) {
 	// 生成纹理对象
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
-
 	// 加载图片
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true);
 	unsigned char *data = stbi_load(path, &width, &height, &nrChannels, 0);
 	if (data)
 	{
+		cout << nrChannels << endl;
 		GLenum format;
 		if (nrChannels == 1)
 			format = GL_RED;
@@ -305,7 +305,7 @@ unsigned int loadTexture(char const * path) {
 	return textureID;
 }
 
-unsigned int loadCubemap(vector<std::string> faces){
+unsigned int loadCubemap(vector<string> faces){
 	// 生成纹理对象
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
@@ -318,6 +318,7 @@ unsigned int loadCubemap(vector<std::string> faces){
 		unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
 		if (data)
 		{
+			cout << "Cubemap texture load at path: " << faces[i] << endl;
 			// 为当前绑定的纹理附加上纹理图像
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
 				0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data
@@ -325,7 +326,7 @@ unsigned int loadCubemap(vector<std::string> faces){
 		}
 		else
 		{
-			std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
+			cout << "Cubemap texture failed to load at path: " << faces[i] << endl;
 		}
 		stbi_image_free(data);
 	}
